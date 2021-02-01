@@ -1,0 +1,33 @@
+esphome:
+  name: bed_occupancy_sensor
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secrets wifi_ssid
+  password: !secrets wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bed Occupancy Sensor"
+    password: "nmM5xEAz5XjM"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+  
+web_server:
+  port: 80
+  
+sensor:
+  - platform: hx711
+    name: "HX711 Value"
+    dout_pin: D0
+    clk_pin: D1
+    gain: 128
+    update_interval: 1s
